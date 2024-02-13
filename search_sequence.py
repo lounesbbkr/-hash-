@@ -19,7 +19,7 @@ def sequence_exists_in_file(user_sequence, filename):
         return ""
 
 if __name__ == "__main__":
-    filename = "pi_file.txt"  # Using fixed filename 'pi_file.txt'
+    filename = "base_pi.txt"  # Using fixed filename 'pi_file.txt'
     user_sequence = input("Enter the sequence to verify: ").strip()
     
     next_32_numbers = sequence_exists_in_file(user_sequence, filename)
