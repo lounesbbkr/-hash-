@@ -1,21 +1,23 @@
-def search_sequence_in_file(pi, search_sequence):
-    with open(pi.txt, 'r') as big_file:
-        big_sequence = big_file.read().split()
-        big_sequence = [int(num) for num in big_sequence]
+def read_sequence_from_file(filename):
+    try:
+        with open(filename, 'r') as file:
+            sequence = file.read().strip()  # Reading the entire file as a single string
+            return sequence
+    except FileNotFoundError:
+        print("File not found.")
+        return ""
 
-    # Convert the search sequence string to a list of integers
-    search_sequence = [int(num) for num in search_sequence.split()]
+def sequence_exists_in_file(user_sequence, filename):
+    file_sequence = read_sequence_from_file(filename)
+    if not file_sequence:
+        return False
+    return user_sequence in file_sequence  # Checking if user_sequence is a substring of file_sequence
 
-    # Iterate through the big sequence with a sliding window
-    for i in range(len(big_sequence) - len(search_sequence) + 1):
-        window = big_sequence[i:i + len(search_sequence)]
-        if window == search_sequence:
-            print("Sequence found starting at index:", i)
-            return
-
-    print("Sequence not found in the big sequence.")
-
-# Example usage:
-big_sequence_filename = 'big_sequence.txt'
-search_sequence = input("Enter the sequence of numbers you want to search for (space-separated): ")
-search_sequence_in_file(big_sequence_filename, search_sequence)
+if __name__ == "__main__":
+    filename = "pi_file.txt"  # Using fixed filename 'pi_file.txt'
+    user_sequence = input("Enter the sequence to verify: ").strip()
+    
+    if sequence_exists_in_file(user_sequence, filename):
+        print("The provided sequence exists in the file.")
+    else:
+        print("The provided sequence does not exist in the file.")
