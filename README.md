@@ -1,1 +1,1 @@
-# pi hash
+# pi hash algo 
