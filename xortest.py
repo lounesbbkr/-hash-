@@ -15,7 +15,7 @@ def xor_bits(char1, char2):
 
 # Tester le XOR entre '0' et les lettres de l'alphabet
 for letter in range(ord('a'), ord('z')+1):
-    result = xor_bits('1', chr(letter))
+    result = xor_bits('8', chr(letter))
     decimal_result = int(result, 2)
     final_result = decimal_result % 36
-    print(f"Résultat du XOR des bits entre '1' et '{chr(letter)}' en décimal (modulo 36) : {final_result}")
+    print(f"Résultat du XOR des bits entre '8' et '{chr(letter)}' en décimal (modulo 36) : {final_result}")
