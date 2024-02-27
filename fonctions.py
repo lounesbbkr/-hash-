@@ -14,3 +14,12 @@ def convert_sequence_text_to_bit(sequence):
 def convert_integer(integer): 
     character_sequence = str(integer) 
     return ''.join(character_sequence)
+
+def xor_bit_strings(bit_string1, bit_string2): 
+    result = "" 
+    for bit1, bit2 in zip(bit_string1, bit_string2): 
+        if bit1 == bit2:
+            result += "0" 
+        else: 
+            result += "1" 
+    return result
