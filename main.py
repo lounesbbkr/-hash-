@@ -17,7 +17,7 @@ les_32 = get_next_32_numbers(serie_ascii)
 
 les_32_en_bits = convert_sequence_text_to_bit(les_32)
 
-xor_rslt = xor_bit_strings(text_in_bit, '0000')
+xor_rslt = xor_bit_strings(text_in_bit, les_32_en_bits)
 
 print("The ASCII sum of the input text is:", sum_ascii)
 print("The text in bit of the input text is:", text_in_bit )

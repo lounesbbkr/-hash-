@@ -16,6 +16,11 @@ def convert_integer(integer):
     return ''.join(character_sequence)
 
 def xor_bit_strings(bit_string1, bit_string2): 
+    if len(bit_string1) < len(bit_string2):
+        bit_string1 = bit_string1.zfill(len(bit_string2))
+    elif len(bit_string2) < len(bit_string1):
+        bit_string2 = bit_string2.zfill(len(bit_string1))
+    
     result = "" 
     for bit1, bit2 in zip(bit_string1, bit_string2): 
         if bit1 == bit2:
