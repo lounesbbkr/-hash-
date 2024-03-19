@@ -29,23 +29,20 @@ def xor_bit_strings(bit_string1, bit_string2):
             result += "1" 
     return result
  
-def convert_bit_to_base36(bit_string):
+def convert_bit_to_hex(bit_string):
     decimal_sequence = []
     for i in range(0, len(bit_string), 8):
         binary_char = bit_string[i:i+8]
         decimal_number = int(binary_char, 2)
         decimal_sequence.append(decimal_number)
     
-    base36_sequence = ""
+    hex_sequence = ""
     for decimal_number in decimal_sequence:
-        base36_char = ""
-        while decimal_number > 0:
-            remainder = decimal_number % 36
-            if remainder < 10:
-                base36_char = str(remainder) + base36_char
-            else:
-                base36_char = chr(ord('A') + remainder - 10) + base36_char
-            decimal_number //= 36
-        base36_sequence += base36_char.zfill(1)  # Update zfill to 1 instead of 2
+        hex_char = hex(decimal_number)[2:].zfill(2)
+        hex_sequence += hex_char
     
-    return base36_sequence[:32]  # Return only the first 32 characters
+    return hex_sequence[:64]  
+
+def shift_string(chaine, decalage):
+    decalage = decalage % len(chaine)
+    return chaine[-decalage:] + chaine[:-decalage]
