@@ -4,7 +4,6 @@ from fonctions import (calculate_ascii_sum,
 import time
 
 def calculate_hash(text):
-    N = len(text) % 32
     sum_ascii = calculate_ascii_sum(text)
     serie_ascii = convert_integer(sum_ascii)
     les_32 = get_next_32_numbers(serie_ascii )
