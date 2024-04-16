@@ -1,10 +1,3 @@
-import json
-
-def get_characters(number):
-    with open('dictionary.json', 'r') as f:
-        data = json.load(f)
-    return data.get(str(number), None)
-
 def calculate_ascii_sum(text):
     ascii_sum = 0
     for char in text:
@@ -77,7 +70,7 @@ def get_next_32_numbers(sequence):
                     sequence_end = index + len(user_sequence)
                     next_32_numbers = file_sequence[sequence_end:sequence_end + 32]
                     return next_32_numbers
-            user_sequence = user_sequence[:-1]  # Remove the last character
+            user_sequence = user_sequence[:-1]  
 
         return None
 
@@ -124,3 +117,29 @@ def convert_text_to_bits(text):
         binary_value = format(ascii_value, '08b')
         bit_string += binary_value
     return bit_string
+
+def calculate_hash(text):
+    sum_ascii = calculate_ascii_sum(text)
+    print ("sum asci 1 : ", sum_ascii )
+    serie_ascii = convert_integer(sum_ascii)
+    les_32 = get_next_32_numbers(serie_ascii )
+    print ("32 numbers of π are  : ", les_32)
+    hash_beta = md_compres(text , les_32) 
+    hash_beta  = convert_bit_to_hex(hash_beta)
+    print("hash_beta : ", hash_beta)
+    print("RE-hashing   ")
+    sum_ascii = calculate_ascii_sum(hash_beta ) + sum_ascii
+    print ("sum asci 2  : ", sum_ascii )
+    serie_ascii = convert_integer(sum_ascii)
+    les_32 = get_next_32_numbers(serie_ascii )
+    print ("32 numbers of π are  : ", les_32)
+    hash = md_compres (hash_beta , les_32 )
+    hash = next_generation(hash)
+    hash  = convert_bit_to_hex(hash )
+    print("hash value  : ", hash)
+    return 
+
+
+
+input_text = input("Enter a text: ")
+calculate_hash(input_text)
