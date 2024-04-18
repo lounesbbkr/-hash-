@@ -18,9 +18,5 @@ def calculate_hash(text):
     return hash
 
 text = input (":")
-start_time = time.time()
 hash = calculate_hash(text)
-end_time = time.time()
-execution_time = end_time - start_time
 print("Hash:", hash)
-print("Execution Time:", execution_time, "seconds")
